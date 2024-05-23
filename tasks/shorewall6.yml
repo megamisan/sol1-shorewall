@@ -271,7 +271,7 @@
       group: root
       mode: 0640
     notify:
-      - restart shorewall
+      - restart shorewall6
     tags:
       - configuration
     with_items:
