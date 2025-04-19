@@ -18,11 +18,13 @@
 {% if rule.comment is defined %} 
 
 # {{ rule.comment }} {% endif %}
-{% if rule.include is defined %}
-?INCLUDE {{ rule.include }} {% endif %}
-{% if rule.shell is defined %}
-?SHELL {{ rule.shell }} {% endif %}
-{% if rule.action is defined %} 
+{% if rule.include is defined +%}
+{{ '' if (shorewall_version|float < 4.6) else '?' }}INCLUDE {{ rule.include }}
+{% endif %}
+{% if rule.shell is defined +%}
+{{ '' if (shorewall_version|float < 4.6) else '?' }}SHELL {{ rule.shell }}
+{% endif %}
+{% if rule.action is defined +%} 
 {{ rule.action | default('-') }} {{ rule.source | default('-') }} {{ rule.dest | default('-') }} {{ rule.proto | default('-') }} {{ rule.dest_port | default('-') }} {{ rule.source_port | default('-') }} {{ rule.original_dest | default('-') }} {{ rule.rate_limit | default('-') }} {{ rule.user_group | default('-') }} {{ rule.mark | default('-') }} {{ rule.connlimit | default('-') }} {{ rule.time | default('-') }} {{ rule.headers | default('-') }} {{ rule.switch | default('-') }} {{ rule.helper | default('-') }} {% endif %}
 {% endif %}
 {% endfor %}

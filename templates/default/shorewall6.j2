@@ -1,13 +1,13 @@
 # {{ ansible_managed }}
 # prevent startup with default configuration
-# set the following varible to 1 in order to allow Shorewall to start
+# set the following variable to 1 in order to allow Shorewall6 to start
 
 startup={{ shorewall6_startup }}
 
-# If your Shorewall configuration requires detection of the ip address of a ppp
-# interface, you must list such interfaces in "wait_interface" to get Shorewall
-# to wait until the interface is configured. Otherwise the script will fail
-# because it won't be able to detect the IP address.
+# if your Shorewall6 configuration requires detection of the ip address of a
+# ppp interface, you must list such interfaces in "wait_interface" to get
+# Shorewall6 to wait until the interface is configured. Otherwise the script
+# will fail because it won't be able to detect the IP address.
 #
 # Example:
 #    wait_interface="ppp0"
@@ -17,7 +17,7 @@ startup={{ shorewall6_startup }}
 #    wait_interface=
 
 #
-# Global start/restart options
+# Global start/restart/reload/stop options
 #
 OPTIONS=""
 
@@ -32,6 +32,16 @@ STARTOPTIONS=""
 RESTARTOPTIONS=""
 
 #
+# Reload options
+#
+RELOADOPTIONS=""
+
+#
+# Stop options
+#
+STOPOPTIONS=""
+
+#
 # Init Log -- if /dev/null, use the STARTUP_LOG defined in shorewall.conf
 #
 INITLOG=/dev/null
@@ -40,6 +50,6 @@ INITLOG=/dev/null
 # Set this to 1 to cause '/etc/init.d/shorewall6 stop' to place the firewall in
 # a safe state rather than to open it
 #
-SAFESTOP=0
+SAFESTOP={{ shorewall6_safestop | default('0') }}
 
 # EOF

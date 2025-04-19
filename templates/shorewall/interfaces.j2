@@ -14,6 +14,6 @@
 
 {% for item in shorewall_interfaces %}{% if item.comment is defined %}# {{ item.comment }} {% endif %} 
 {{ item.zone }} {{ item.interface }} {{ item.options | default("-") }}
-{% endfor %}
+{%- endfor +%}
 
 #LAST LINE -- DO NOT REMOVE

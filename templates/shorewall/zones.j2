@@ -13,6 +13,6 @@
 
 {% for i in shorewall_zones %}{% if i.comment is defined %}# {{ i.comment }} {% endif %} 
 {{ i.zone }} {{ i.type }} {{ i.options | default('-') }} {{ i.options_in | default('-') }} {{ i.options_out | default('-') }}
-{% endfor %}
+{%- endfor +%}
 
 #LAST LINE -- DO NOT REMOVE

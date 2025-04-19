@@ -135,7 +135,7 @@ shorewall_conf_defaults:
   #            L O G G I N G
   ###############################################################################
   logging:
-    log_level: "info"
+    log_level: "\"info\""
     blacklist_log_level: ""
     invalid_log_level: ""
     log_backend: ""
@@ -146,14 +146,14 @@ shorewall_conf_defaults:
     logfile: "/var/log/messages"
     logformat: "\"Shorewall:%s:%s:\""
     logtagonly: "No"
-    loglimit: ""
-    maclist_log_level: "$LOG_LEVEL"
+    loglimit: "\"s:1/sec:10\""
+    maclist_log_level: "\"$LOG_LEVEL\""
     related_log_level: ""
-    rpfilter_log_level: "$LOG_LEVEL"
-    sfilter_log_level: "$LOG_LEVEL"
-    smurf_log_level: "$LOG_LEVEL"
+    rpfilter_log_level: "\"$LOG_LEVEL\""
+    sfilter_log_level: "\"$LOG_LEVEL\""
+    smurf_log_level: "\"$LOG_LEVEL\""
     startup_log: "/var/log/shorewall-init.log"
-    tcp_flags_log_level: "$LOG_LEVEL"
+    tcp_flags_log_level: "\"$LOG_LEVEL\""
     untracked_log_level: ""
 
   ###############################################################################
@@ -161,7 +161,7 @@ shorewall_conf_defaults:
   ###############################################################################
   locations:
     arptables: ""
-    config_path: "\"${CONFDIR}/shorewall:${SHAREDIR}/shorewall\""
+    config_path: "\":${CONFDIR}/shorewall:${SHAREDIR}/shorewall\""
     geoipdir: "/usr/share/xt_geoip/LE"
     iptables: ""
     ip: ""
@@ -173,18 +173,18 @@ shorewall_conf_defaults:
     perl: "/usr/bin/perl"
     restorefile: "restore"
     shorewall_shell: "/bin/sh"
-    subsyslock: ""
+    subsyslock: "\"\""
     tc: ""
 
   ###############################################################################
   #   D E F A U L T   A C T I O N S / M A C R O S
   ###############################################################################
   actions_and_macros:
-    accept_default: "\"None\""
+    accept_default: "\"none\""
     blacklist_default: "\"Broadcast(DROP),Multicast(DROP),dropNotSyn:$LOG_LEVEL,dropInvalid:$LOG_LEVEL,DropDNSrep:$LOG_LEVEL\""
     drop_default: "\"Broadcast(DROP),Multicast(DROP)\""
-    nfqueue_default: "\"None\""
-    queue_default: "\"None\""
+    nfqueue_default: "\"none\""
+    queue_default: "\"none\""
     reject_default: "\"Broadcast(DROP),Multicast(DROP)\""
 
   ###############################################################################
@@ -204,9 +204,9 @@ shorewall_conf_defaults:
     add_snat_aliases: "No"
     adminisabsentminded: "Yes"
     autocomment: "Yes"
-    autohelpers: "Yes"
-    automake: "No"
-    balance_providers: ""
+    autohelpers: "No"
+    automake: "Yes"
+    balance_providers: "No"
     basic_filters: "No"
     blacklist: "\"NEW,INVALID,UNTRACKED\""
     clampmss: "No"
@@ -217,6 +217,7 @@ shorewall_conf_defaults:
     detect_dnat_ipaddrs: "No"
     disable_ipv6: "No"
     docker: "No"
+    docker_bridge: docker0
     dont_load: ""
     dynamic_blacklist: "Yes"
     expand_policies: "Yes"
@@ -227,7 +228,7 @@ shorewall_conf_defaults:
     ignoreunknownvariables: "No"
     implicit_continue: "No"
     ipset_warnings: "Yes"
-    ip_forwarding: "On"
+    ip_forwarding: "Keep"
     keep_rt_tables: "No"
     maclist_table: "filter"
     maclist_ttl: ""
@@ -250,7 +251,7 @@ shorewall_conf_defaults:
     route_filter: "Yes"
     save_arptables: "No"
     save_ipsets: "No"
-    tc_enabled: "No"
+    tc_enabled: "Internal"
     tc_expert: "No"
     tc_priomap: "\"2 3 3 3 2 3 1 1 2 2 2 2 2 2 2 2\""
     track_providers: "Yes"
@@ -321,7 +322,7 @@ shorewall6_conf_defaults:
   #            L O G G I N G
   ###############################################################################
   logging:
-    log_level: "info"
+    log_level: "\"info\""
     blacklist_log_level: ""
     invalid_log_level: ""
     log_backend: ""
@@ -330,22 +331,22 @@ shorewall6_conf_defaults:
     logallnew: ""
     logfile: "/var/log/messages"
     logformat: "\"Shorewall:%s:%s:\""
-    loglimit: ""
+    loglimit: "\"s:1/sec:10\""
     logtagonly: "No"
-    maclist_log_level: "$LOG_LEVEL"
+    maclist_log_level: "\"$LOG_LEVEL\""
     related_log_level: ""
-    rpfilter_log_level: "$LOG_LEVEL"
-    sfilter_log_level: "$LOG_LEVEL"
-    smurf_log_level: "$LOG_LEVEL"
+    rpfilter_log_level: "\"$LOG_LEVEL\""
+    sfilter_log_level: "\"$LOG_LEVEL\""
+    smurf_log_level: "\"$LOG_LEVEL\""
     startup_log: "/var/log/shorewall6-init.log"
-    tcp_flags_log_level: "$LOG_LEVEL"
+    tcp_flags_log_level: "\"$LOG_LEVEL\""
     untracked_log_level: ""
 
   ###############################################################################
   # L O C A T I O N   O F F I L E S   A N D   D I R E C T O R I E S
   ###############################################################################
   locations:
-    config_path: "\"${CONFDIR}/shorewall6:/usr/share/shorewall6:${SHAREDIR}/shorewall\""
+    config_path: "\":${CONFDIR}/shorewall6:/usr/share/shorewall6:${SHAREDIR}/shorewall\""
     geoipdir: "/usr/share/xt_geoip/LE"
     ip6tables: ""
     ip: ""
@@ -357,18 +358,18 @@ shorewall6_conf_defaults:
     path: "\"/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin:/usr/local/sbin\""
     restorefile: "restore"
     shorewall_shell: "/bin/sh"
-    subsyslock: ""
+    subsyslock: "\"\""
     tc: ""
 
   ###############################################################################
   #   D E F A U L T   A C T I O N S / M A C R O S
   ###############################################################################
   actions_and_macros:
-    accept_default: "\"None\""
+    accept_default: "\"none\""
     blacklist_default: "\"AllowICMPs,Broadcast(DROP),Multicast(DROP),dropNotSyn:$LOG_LEVEL,dropInvalid:$LOG_LEVEL,DropDNSrep:$LOG_LEVEL\""
     drop_default: "\"AllowICMPs,Broadcast(DROP),Multicast(DROP)\""
-    nfqueue_default: "\"None\""
-    queue_default: "\"None\""
+    nfqueue_default: "\"none\""
+    queue_default: "\"none\""
     reject_default: "\"AllowICMPs,Broadcast(DROP),Multicast(DROP)\""
 
   ###############################################################################
@@ -386,9 +387,9 @@ shorewall6_conf_defaults:
     accounting_table: "filter"
     adminisabsentminded: "Yes"
     autocomment: "Yes"
-    autohelpers: "Yes"
-    automake: "No"
-    balance_providers: ""
+    autohelpers: "No"
+    automake: "Yes"
+    balance_providers: "No"
     basic_filters: "No"
     blacklist: "\"NEW,INVALID,UNTRACKED\""
     clampmss: "No"
@@ -406,13 +407,13 @@ shorewall6_conf_defaults:
     ignoreunknownvariables: "No"
     implicit_continue: "No"
     ipset_warnings: "Yes"
-    ip_forwarding: "On"
-    #keep_rt_tables: "No"
+    ip_forwarding: "Keep"
+    keep_rt_tables: "Yes"
     maclist_table: "filter"
     maclist_ttl: ""
     mangle_enabled: "Yes"
     mark_in_forward_chain: "No"
-    miniupnpd: ""
+    miniupnpd: "No"
     mutex_timeout: "60"
     optimize: "All"
     optimize_accounting: "No"
@@ -424,7 +425,7 @@ shorewall6_conf_defaults:
     restore_default_route: "Yes"
     restore_routemarks: "Yes"
     save_ipsets: "No"
-    tc_enabled: "No"
+    tc_enabled: "Shared"
     tc_expert: "No"
     tc_priomap: "\"2 3 3 3 2 3 1 1 2 2 2 2 2 2 2 2\""
     track_providers: "Yes"
@@ -435,7 +436,7 @@ shorewall6_conf_defaults:
     use_rt_names: "No"
     verbose_messages: "Yes"
     warnoldcapversion: "Yes"
-    workarounds: "Yes"
+    workarounds: "No"
     zero_marks: "No"
     zone2zone: "-"
 
