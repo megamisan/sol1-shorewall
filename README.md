@@ -36,8 +36,8 @@ shorewall_conf | *this variable uses standard option / value pairs*
 shorewall_interfaces | `zone`, `interface`, `options`, `comment`
 shorewall_masq | `source`, `interface`, `proto`, `ports`, `ipsec`, `mark`, `user`, `switch`, `original_dest`, `comment`
 shorewall_policies | `source`, `dest`, `policy`, `log_level`, `burst_limit`, `connlimit`, `comment`
-shorewall_rules | **sections**: `section`, **rules**: `rule`.  For each **rule**: `action`, `source`, `dest`, `proto`, `dest_port`, `source_port`, `original_dest`, `rate_limit`, `user_group`, `mark`, `connlimit`, `time`, `headers`, `switch`, `helper`, `when`, `comment`
-shorewall_snat | `actrion`, `action_param`, `source`, `dest`, `proto`, `port`, `ipsec`, `mark`, `user`, `switch`, `original_dest`, `probability`, `comment`
+shorewall_rules | **sections**: `section`, **rules**: `rule`.  For each **rule**: `action`, `source`, `dest`, `proto`, `dest_port`, `source_port`, `original_dest`, `rate_limit`, `user_group`, `mark`, `connlimit`, `time`, `headers`, `switch`, `helper`, `when`, `comment`, `include`, `shell`
+shorewall_snat | `actrion`, `action_param`, `source`, `dest`, `proto`, `port`, `ipsec`, `mark`, `user`, `switch`, `original_dest`, `probability`, `comment`, `include`, `shell`
 shorewall_zones | `zone`, `type`, `options`, `options_in`, `options_out`, `comment`
 shorewall_hosts | `zone`, `hosts`, `options`, `comment`
 shorewall_params | [ `import` | `comment` | `name`, `value` ] **imports are processed first then name/value pairs**

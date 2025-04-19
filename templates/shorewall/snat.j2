@@ -14,7 +14,9 @@
 MASQUERADE	{{ rule.source | default('-') }} {{ rule.interface | default('-') }}  {{ rule.proto | default('-') }} {{ rule.ports | default('-') }} {{ rule.ipsec | default('-') }} {{ rule.mark | default('-') }} {{ rule.user | default('-') }} {{ rule.switch | default('-') }} {{ rule.original_dest | default('-') }}
 {% endfor %}{% endif %}
 {% if shorewall_snat is defined %}{% for rule in shorewall_snat %}{% if rule.comment is defined %}# {{ rule.comment }} {% endif %} 
-{{ rule.action }}({{ rule.action_param | default('') }})  {{ rule.source | default('-') }} {{ rule.dest | default('-') }}  {{ rule.proto | default('-') }} {{ rule.port | default('-') }} {{ rule.ipsec | default('-') }} {{ rule.mark | default('-') }} {{ rule.user | default('-') }} {{ rule.switch | default('-') }} {{ rule.original_dest | default('-') }} {{ rule.probability | default('-') }}
+{% if rule.include is defined %}?INCLUDE {{ rule.include }} {% endif %}
+{% if rule.shell is defined %}?SHELL {{ rule.shell }} {% endif %}
+{% if rule.action is defined %}{{ rule.action }}({{ rule.action_param | default('') }})  {{ rule.source | default('-') }} {{ rule.dest | default('-') }}  {{ rule.proto | default('-') }} {{ rule.port | default('-') }} {{ rule.ipsec | default('-') }} {{ rule.mark | default('-') }} {{ rule.user | default('-') }} {{ rule.switch | default('-') }} {{ rule.original_dest | default('-') }} {{ rule.probability | default('-') }}{% endif %}
 {% endfor %}{% endif %}
 
 #LAST LINE -- DO NOT REMOVE
