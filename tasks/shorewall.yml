@@ -21,12 +21,15 @@
   command: shorewall version
   register: shorewall_version_result
   changed_when: False
+  check_mode: no
+  ignore_errors: True
   tags:
     - configuration
 
 - name: Convert Shorewall version var
   set_fact:
     shorewall_version: "{{ '.'.join( shorewall_version_result.get('stdout', '0.0').split('.')[:2] ) }}"
+  check_mode: no
   tags:
     - configuration
 
